@@ -10,7 +10,6 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 def main(page: ft.Page):
     page.title = "Liga Football Americano"
 page.add(ft.Text("¡Bienvenido a Football Americano en Córdoba!"))
- page.add(ft.Text("¡Cande te ♥ jeje!"))
     page.scroll = "auto"
 
     def cargar_tabla(nombre_tabla):
