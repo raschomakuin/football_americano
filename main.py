@@ -30,7 +30,7 @@ def main(page: ft.Page):
     )
 
     # Socios
-    socios_data = cargar_tabla("TIPO_SOCIOS")
+    socios_data = cargar_tabla("TIPO_SOCIO")
     socios_column = ft.Column(
         controls=[ft.Text(f"👤 {s['socio_DESCRIPCION']}", size=18) for s in socios_data]
     )
