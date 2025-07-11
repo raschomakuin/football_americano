@@ -3,7 +3,7 @@ from supabase import create_client
 
 # Reemplazá con tu URL y API KEY de Supabase
 SUPABASE_URL = "https://zfvfbynsfljtrcqawefs.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmdmZieW5zZmxqdHJjcWF3ZWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxMTIwNDksImV4cCI6MjA2NzY4ODA0OX0.oJaevKWnn-24JPObgmx[...]"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmdmZieW5zZmxqdHJjcWF3ZWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxMTIwNDksImV4cCI6MjA2NzY4ODA0OX0.oJaevKWnn-24JPObgmx0btUFQpO7dp953FZETnEfeyE"
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
