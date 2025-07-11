@@ -9,7 +9,7 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def main(page: ft.Page):
     page.title = "Liga Football Americano"
-    page.bgcolor = ft.colors.BLUE_GREY_50
+    page.bgcolor = "#ECEFF1" 
     page.scroll = "auto"
     page.padding = 20
     page.spacing = 10
@@ -20,7 +20,7 @@ def main(page: ft.Page):
             "🏈 ¡Bienvenido a Football Americano en Córdoba! 🏈",
             size=32,
             weight="bold",
-            color=ft.colors.BLUE_900,
+            color="#BBDEFB",
             text_align=ft.TextAlign.CENTER,
             expand=True,
             margin=ft.margin.only(bottom=20),
@@ -42,14 +42,14 @@ def main(page: ft.Page):
             ft.Card(
                 content=ft.Container(
                     ft.Row([
-                        ft.Icon(ft.icons.SPORTS_FOOTBALL, color=ft.colors.ORANGE),
+                        ft.Icon(ft.icons.SPORTS_FOOTBALL, color="#FF9800"),
                         ft.Text(e['NOMBRE_EQUIPO'], size=20, weight="bold"),
                     ]),
                     padding=10,
                 ),
                 elevation=4,
                 margin=5,
-                bgcolor=ft.colors.BLUE_50,
+                bgcolor="#0D47A1",
                 border_radius=12,
             )
             for e in equipos_data
@@ -65,7 +65,7 @@ def main(page: ft.Page):
             ft.Card(
                 content=ft.Container(
                     ft.Column([
-                        ft.Text(j['NOMBRE'], size=18, weight="bold", color=ft.colors.BLUE_700),
+                        ft.Text(j['NOMBRE'], size=18, weight="bold", color="#0D47A1" ),
                         ft.Text(f"DNI: {j['DNI']}"),
                         ft.Text(f"Fecha Nac: {j['FECHA_NACIMIENTO']}"),
                     ]),
@@ -73,7 +73,7 @@ def main(page: ft.Page):
                 ),
                 elevation=3,
                 margin=5,
-                bgcolor=ft.colors.WHITE,
+                bgcolor="#BBDEFB",
                 border_radius=10,
             )
             for j in jugadores_data
@@ -89,14 +89,14 @@ def main(page: ft.Page):
             ft.Card(
                 content=ft.Container(
                     ft.Row([
-                        ft.Icon(ft.icons.PERSON, color=ft.colors.GREEN_700),
+                        ft.Icon(ft.icons.PERSON, color="#BBDEFB"),
                         ft.Text(s['socio_DESCRIPCION'], size=18),
                     ]),
                     padding=10,
                 ),
                 elevation=2,
                 margin=5,
-                bgcolor=ft.colors.GREEN_50,
+                bgcolor="#BBDEFB",
                 border_radius=10,
             )
             for s in socios_data
