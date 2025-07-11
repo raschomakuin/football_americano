@@ -9,8 +9,23 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def main(page: ft.Page):
     page.title = "Liga Football Americano"
+    page.bgcolor = ft.colors.BLUE_GREY_50
     page.scroll = "auto"
-    page.add(ft.Text("¡Bienvenido a Football Americano en Córdoba!", size=24, weight="bold"))
+    page.padding = 20
+    page.spacing = 10
+
+    # Título principal centrado y destacado
+    page.add(
+        ft.Text(
+            "🏈 ¡Bienvenido a Football Americano en Córdoba! 🏈",
+            size=32,
+            weight="bold",
+            color=ft.colors.BLUE_900,
+            text_align=ft.TextAlign.CENTER,
+            expand=True,
+            margin=ft.margin.only(bottom=20),
+        )
+    )
 
     def cargar_tabla(nombre_tabla):
         try:
@@ -24,27 +39,70 @@ def main(page: ft.Page):
     equipos_data = cargar_tabla("EQUIPOS")
     equipos_column = ft.Column(
         controls=[
-            ft.Text(f"🏈 {e['NOMBRE_EQUIPO']}", size=20)
+            ft.Card(
+                content=ft.Container(
+                    ft.Row([
+                        ft.Icon(ft.icons.SPORTS_FOOTBALL, color=ft.colors.ORANGE),
+                        ft.Text(e['NOMBRE_EQUIPO'], size=20, weight="bold"),
+                    ]),
+                    padding=10,
+                ),
+                elevation=4,
+                margin=5,
+                bgcolor=ft.colors.BLUE_50,
+                border_radius=12,
+            )
             for e in equipos_data
-        ]
+        ],
+        scroll="auto",
+        spacing=8,
     )
 
     # Jugadores
     jugadores_data = cargar_tabla("JUGADORES")
     jugadores_column = ft.Column(
         controls=[
-            ft.Text(f"{j['NOMBRE']} - DNI: {j['DNI']} - Nac: {j['FECHA_NACIMIENTO']}")
+            ft.Card(
+                content=ft.Container(
+                    ft.Column([
+                        ft.Text(j['NOMBRE'], size=18, weight="bold", color=ft.colors.BLUE_700),
+                        ft.Text(f"DNI: {j['DNI']}"),
+                        ft.Text(f"Fecha Nac: {j['FECHA_NACIMIENTO']}"),
+                    ]),
+                    padding=10,
+                ),
+                elevation=3,
+                margin=5,
+                bgcolor=ft.colors.WHITE,
+                border_radius=10,
+            )
             for j in jugadores_data
-        ]
+        ],
+        scroll="auto",
+        spacing=8,
     )
 
     # Socios
     socios_data = cargar_tabla("TIPO_SOCIO")
     socios_column = ft.Column(
         controls=[
-            ft.Text(f"👤 {s['socio_DESCRIPCION']}", size=18)
+            ft.Card(
+                content=ft.Container(
+                    ft.Row([
+                        ft.Icon(ft.icons.PERSON, color=ft.colors.GREEN_700),
+                        ft.Text(s['socio_DESCRIPCION'], size=18),
+                    ]),
+                    padding=10,
+                ),
+                elevation=2,
+                margin=5,
+                bgcolor=ft.colors.GREEN_50,
+                border_radius=10,
+            )
             for s in socios_data
-        ]
+        ],
+        scroll="auto",
+        spacing=8,
     )
 
     tabs = ft.Tabs(
@@ -55,8 +113,10 @@ def main(page: ft.Page):
             ft.Tab(text="Jugadores", content=jugadores_column),
             ft.Tab(text="Socios", content=socios_column),
         ],
+        expand=True,
     )
 
     page.add(tabs)
 
 ft.app(target=main, view=ft.WEB_BROWSER)
+
