@@ -44,14 +44,14 @@ def main(page: ft.Page):
             ft.Card(
                 content=ft.Container(
                     ft.Row([
-                        ft.Icon(ft.icons.SPORTS_FOOTBALL, color="#FF9800"),
+                        ft.Icon(ft.icons.SPORTS_FOOTBALL, color="#BBDEFB"),
                         ft.Text(e['NOMBRE_EQUIPO'], size=20, weight="bold"),
                     ]),
                     padding=10,
                 ),
                 elevation=4,
                 margin=5,
-                bgcolor="#0D47A1",
+                bgcolor="#BBDEFB",
                 border_radius=12,
             )
             for e in equipos_data
@@ -67,7 +67,7 @@ def main(page: ft.Page):
             ft.Card(
                 content=ft.Container(
                     ft.Column([
-                        ft.Text(j['NOMBRE'], size=18, weight="bold", color="#0D47A1" ),
+                        ft.Text(j['NOMBRE'], size=18, weight="bold", color="#BBDEFB" ),
                         ft.Text(f"DNI: {j['DNI']}"),
                         ft.Text(f"Fecha Nac: {j['FECHA_NACIMIENTO']}"),
                     ]),
