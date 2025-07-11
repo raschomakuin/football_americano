@@ -9,16 +9,24 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def main(page: ft.Page):
     page.title = "Liga Football Americano"
-page.add(ft.Text("¡Bienvenido a Football Americano en Córdoba!"))
     page.scroll = "auto"
+    page.add(ft.Text("¡Bienvenido a Football Americano en Córdoba!", size=24, weight="bold"))
 
     def cargar_tabla(nombre_tabla):
-        return supabase.table(nombre_tabla).select("*").execute().data
+        try:
+            resultado = supabase.table(nombre_tabla).select("*").execute()
+            return resultado.data
+        except Exception as e:
+            print(f"Error cargando {nombre_tabla}: {e}")
+            return []
 
     # Equipos
     equipos_data = cargar_tabla("EQUIPOS")
     equipos_column = ft.Column(
-        controls=[ft.Text(f"🏈 {e['NOMBRE_EQUIPO']}", size=20) for e in equipos_data]
+        controls=[
+            ft.Text(f"🏈 {e['NOMBRE_EQUIPO']}", size=20)
+            for e in equipos_data
+        ]
     )
 
     # Jugadores
@@ -33,7 +41,10 @@ page.add(ft.Text("¡Bienvenido a Football Americano en Córdoba!"))
     # Socios
     socios_data = cargar_tabla("TIPO_SOCIO")
     socios_column = ft.Column(
-        controls=[ft.Text(f"👤 {s['socio_DESCRIPCION']}", size=18) for s in socios_data]
+        controls=[
+            ft.Text(f"👤 {s['socio_DESCRIPCION']}", size=18)
+            for s in socios_data
+        ]
     )
 
     tabs = ft.Tabs(
